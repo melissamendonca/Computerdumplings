@@ -6,8 +6,14 @@ package healthappsc;
 
 /**
  *
- * @author Ethan
+ * @author Ethan Judice
  */
 public class MedicationTracker {
+    
+    public String[] takeMeds(String medKeys){
+        //TODO
+        String[] medArray = {""};
+        return medArray;
+    }
     
 }
