@@ -6,8 +6,13 @@ package healthappsc;
 
 /**
  *
- * @author Ethan
+ * @author Ethan Judice
  */
 public class WaterTracker {
+    
+    public int waterIntake(int BMI){
+        //TODO
+        return 0;
+    }
     
 }
