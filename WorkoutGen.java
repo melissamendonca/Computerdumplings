@@ -6,8 +6,14 @@ package healthappsc;
 
 /**
  *
- * @author Ethan
+ * @author Ethan Judice
  */
 public class WorkoutGen {
+    
+    public String[] workoutList(String Keys){
+        //TODO
+        String[] workoutArray = {""};
+        return workoutArray;
+    }
     
 }
