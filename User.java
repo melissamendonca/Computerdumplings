@@ -18,6 +18,7 @@ public class User {
     int CalorieTracker = 0;
     int WaterTracker = 0;
     String WorkoutKeys = null;
+    String MedicineKeys = null;
     
     
     public void UserSetData(String[] Data){
@@ -29,6 +30,7 @@ public class User {
         CalorieTracker = Integer.parseInt(Data[5]);
         WaterTracker = Integer.parseInt(Data[6]);
         WorkoutKeys = Data[7];
+        MedicineKeys = Data[8];
     }
     
     public String getUsername(){
@@ -61,6 +63,10 @@ public class User {
     
     public String getWorkoutKeys(){
         return WorkoutKeys;
+    }
+    
+    public String getMedKeys(){
+        return MedicineKeys;
     }
     
 }
