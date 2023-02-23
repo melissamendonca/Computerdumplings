@@ -31,12 +31,17 @@ public class HealthAppSC {
         UserDataSplited[5] is CalorieTracker (daily intake)
         UserDataSplited[6] is WaterTracker (daily intake in ounces)
         UserDataSplited[7] is WorkoutKeys (keys seperated by only commas)
+        UserDataSplited[8] is medKeys (keys seperated by only commas)
+        ^also is in format (medName,weeklyDose)
         */
         User UserData = new User();
         UserData.UserSetData(UserDataSplited);
         
         
     }
+    
+    
+    
     
     
 }
