@@ -22,8 +22,16 @@ public class HealthAppSC {
         String OldData = UserDataString;
         System.out.println("UserData is: " + UserDataString);
         String[] UserDataSplited = UserDataString.split("\\s+");
-        System.out.println(UserDataSplited.length);
-        User Username = new User();
+        /*
+        UserDataSplited[0] is Username
+        UserDataSplited[1] is Password
+        UserDataSplited[2] is Height (inches)
+        UserDataSplited[3] is weight (pounds)
+        UserDataSplited[4] is BMI
+        UserDataSplited[5] is CalorieTracker (daily intake)
+        UserDataSplited[6] is WaterTracker (daily intake in ounces)
+        UserDataSplited[7] is WorkoutKeys (keys seperated by only commas)
+        */
         
         
     }
@@ -73,43 +81,4 @@ public class HealthAppSC {
         return Data;
     }
     
-}
-
-class User {
-    
-    public String username(){
-        //TODO
-        return null;
-    }
-    
-    public int height(){
-        //TODO
-        return 0;
-    }
-    
-    public int weight(){
-        //TODO
-        return 0;
-    }
-    
-    public int BMI(){
-        //TODO
-        return 0;
-    }
-    
-    public int CalorieTracker(){
-        //TODO
-        return 0;
-    }
-    
-    public int WaterTracker(){
-        //TODO
-        return 0;
-    }
-    
-    public String[] workoutGen(){
-        //TODO
-        String[] workoutList = {"none"};
-        return workoutList;
-    }
 }
