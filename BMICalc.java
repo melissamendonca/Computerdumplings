@@ -6,8 +6,13 @@ package healthappsc;
 
 /**
  *
- * @author Ethan
+ * @author Ethan Judice
  */
 public class BMICalc {
+    
+    public int BMI(int Height, int Weight){
+        //TODO
+        return 0;
+    }
     
 }
