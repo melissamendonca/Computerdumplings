@@ -10,9 +10,15 @@ package healthappsc;
  */
 public class BMICalc {
     
-    public int BMI(int Height, int Weight){
+    private int BMI = 0;
+    
+    public int getBMI(){
+        return BMI;
+
+    }
+    
+    public void BMICalc(int Height, int Weight){
         //TODO
-        return 0;
     }
     
 }
