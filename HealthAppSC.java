@@ -37,6 +37,12 @@ public class HealthAppSC {
         User UserData = new User();
         UserData.UserSetData(UserDataSplited);
         
+        BMICalc BMIData = new BMICalc();
+        CalorieTracker CalData = new CalorieTracker();
+        MedicationTracker MedData = new MedicationTracker();
+        WaterTracker WaterData = new WaterTracker();
+        WorkoutGen WorkoutGenData = new WorkoutGen();
+        
         
     }
     
