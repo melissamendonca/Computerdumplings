@@ -9,10 +9,16 @@ package healthappsc;
  * @author Ethan Judice
  */
 public class CalorieTracker {
+    private int calorieIntake = 0;
     
-    public int calorieIntake(int BMI){
+    public int getCalorieIntake(){
+        
+        return calorieIntake;
+    }
+    
+    public void calorieIntakeCalc(int BMI){
         //TODO
-        return 0;
+        return;
     }
     
 }
