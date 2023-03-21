@@ -6,19 +6,19 @@ package healthappsc;
 
 /**
  *
- * @author Ethan Judice
+ * @author Ethan Judice, Cathleen Foret
  */
 public class User {
     
-    String Username = null;
-    String Password = null;
-    int Height = 0;
-    int Weight = 0;
-    int BMI = 0;
-    int CalorieTracker = 0;
-    int WaterTracker = 0;
-    String WorkoutKeys = null;
-    String MedicineKeys = null;
+    private String Username = null;
+    private String Password = null;
+    private int Height = 0;
+    private int Weight = 0;
+    private int BMI = 0;
+    private int CalorieTracker = 0;
+    private int WaterTracker = 0;
+    private String WorkoutKeys = null;
+    private String MedicineKeys = null;
     
     
     public void UserSetData(String[] Data){
@@ -33,6 +33,44 @@ public class User {
         MedicineKeys = Data[8];
     }
     
+    //mutator methods
+     public void setUsername(String newName){
+        Username = newName;
+    }
+    
+    public void setPassword(String newPass){
+        Password = newPass;
+    }
+    
+    public void setHeight(int newHeight){
+        Height = newHeight;
+    }
+    
+    public void setWeight(int newWeight){
+        Weight = newWeight;
+    }
+    
+    public void setBMI(int newBMI){
+        BMI = newBMI;
+    }
+    
+    public void setCalories(int newCal){
+        CalorieTracker = newCal;
+    }
+    
+    public void setWater(int waterIntake){
+        WaterTracker = waterIntake;
+    }
+    
+    public void setWorkoutKeys(String newWorkKeys){
+        WorkoutKeys = newWorkKeys;
+    }
+    
+    public void setMedKeys(String newMedKeys){
+        MedicineKeys = newMedKeys;
+    }
+    
+    //accessor methods
     public String getUsername(){
         return Username;
     }
