@@ -40,7 +40,11 @@ public class HealthAppSC {
         BMICalc BMIData = new BMICalc();
         CalorieTracker CalData = new CalorieTracker();
         MedicationTracker MedData = new MedicationTracker();
+        
         WaterTracker WaterData = new WaterTracker();
+        WaterData.waterIntakeCalc(UserData.getWeight());
+        UserData.setWater(WaterData.getWaterIntake());
+        
         WorkoutGen WorkoutGenData = new WorkoutGen();
         
         
