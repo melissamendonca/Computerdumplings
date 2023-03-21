@@ -6,18 +6,18 @@ package healthappsc;
 
 /**
  *
- * @author Ethan Judice
+ * @author Ethan Judice, Cathleen Foret
  */
 public class WaterTracker {
-    private int waterIntake = 0;
+    private int recWaterIntake = 0;
     
     public int getWaterIntake(){
         
-        return waterIntake;
+        return recWaterIntake;
     }
     
-    public void waterIntakeCalc(int BMI){
-        //TODO
+    public void waterIntakeCalc(int weight){
+        recWaterIntake = weight / 2;
     }
     
     
