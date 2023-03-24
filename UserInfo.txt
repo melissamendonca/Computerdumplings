@@ -1,3 +1,3 @@
 Username Password Height(in) Weight(lbs) BMI CalorieTracker WaterTracker(oz) WorkoutKeys MedKeys(name,numPerWeek)
-Ejudic5 Password12 66 120 50 2500 1250 quads,hamstrings,biceps Advil,7
-Name Pass 58 100 50 2200 1100 cardio,chest,glutes Melatonin,3
+Ejudic5 Password12 66 120 50 2500 1250 quads,hamstrings,biceps Advil,7 Male 19
+Name Pass 58 100 50 2200 1100 cardio,chest,glutes Melatonin,3 Male 20
