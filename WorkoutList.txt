@@ -1,1 +1,0 @@
-WorkoutGen has not been properly implemented.
