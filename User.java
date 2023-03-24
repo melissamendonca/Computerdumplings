@@ -19,7 +19,8 @@ public class User {
     private int WaterTracker = 0;
     private String WorkoutKeys = null;
     private String MedicineKeys = null;
-    
+    private String Gender = null;
+    private int Age = 0;
     
     public void UserSetData(String[] Data){
         Username = Data[0];
@@ -31,6 +32,8 @@ public class User {
         WaterTracker = Integer.parseInt(Data[6]);
         WorkoutKeys = Data[7];
         MedicineKeys = Data[8];
+        Gender = Data[9];
+        Age = Integer.parseInt(Data[10]);
     }
     
     //mutator methods
@@ -70,6 +73,14 @@ public class User {
         MedicineKeys = newMedKeys;
     }
     
+    public String setGender(){
+        return Gender;
+    }
+    
+    public int setAge(){
+        return Age;
+    }
+    
     //accessor methods
     public String getUsername(){
         return Username;
@@ -105,6 +116,14 @@ public class User {
     
     public String getMedKeys(){
         return MedicineKeys;
+    }
+    
+     public String getGender(){
+        return Gender;
+    }
+    
+    public int getAge(){
+        return Age;
     }
     
 }
