@@ -1,5 +1,5 @@
 package healthappsc;
-
+import java.util.Scanner;
 /**
  *
  * @author Halle Vu
