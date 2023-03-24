@@ -4,7 +4,7 @@
  * their medication today until they provide a valid input of "yes" or "no". 
  */
 package healthappsc;
-
+import java.util.Scanner;
 /**
  *
  * @author Halle Vu
