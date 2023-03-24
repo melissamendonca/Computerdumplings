@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;
 /**
  *
- * @author Ethan Judice
+ * @author Ethan Judice, Cathleen Foret
  */
 public class HealthAppSC {
 
@@ -33,12 +33,18 @@ public class HealthAppSC {
         UserDataSplited[7] is WorkoutKeys (keys seperated by only commas)
         UserDataSplited[8] is medKeys (keys seperated by only commas)
         ^also is in format (medName,weeklyDose)
+        UserDataSplited[9] is Gender (male/female)
+        UserDataSplited[10] is Age
         */
         User UserData = new User();
         UserData.UserSetData(UserDataSplited);
         
         BMICalc BMIData = new BMICalc();
+        
         CalorieTracker CalData = new CalorieTracker();
+        CalData.calorieIntakeCalc(UserData.getGender(), UserData.getHeight(),UserData.getWeight(), UserData.getAge());
+        UserData.setCalories(CalData.getCalorieIntake());
+        
         MedicationTracker MedData = new MedicationTracker();
         
         WaterTracker WaterData = new WaterTracker();
