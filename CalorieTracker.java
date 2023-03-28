@@ -10,6 +10,7 @@ package healthappsc;
  */
 public class CalorieTracker {
     private int recCalIntake = 0;
+    private double activeFactor = 0;
     
     public int getCalorieIntake(){
         
@@ -34,6 +35,26 @@ public class CalorieTracker {
         }
         
         recCalIntake = calCalc;
+    }
+    
+    public void setActiveFactor(String activityLvl){
+        switch(activityLvl){
+            case "inactive":
+                activeFactor = 1.2;//sedentary; little or no exercise 
+                break;
+            case "lightly":
+                activeFactor = 1.375; //light exercise or sports 1-3 days a week
+                break;
+            case "moderately":
+                activeFactor = 1.550; //moderate exercise or sports 3-5 days a week
+                break;
+            case "very":
+                activeFactor = 1.725; //hard exercise or sports 6-7 days a week
+                break;
+            case "extremely":
+                activeFactor = 1.9; //very hard exercise or sports AND physical job or training
+                break;
+        }   
     }
     
      public int toKilos(int weight){
