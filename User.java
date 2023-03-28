@@ -75,12 +75,12 @@ public class User {
         MedicineKeys = newMedKeys;
     }
     
-    public String setGender(String newGender){
+    public void setGender(String newGender){
         Gender = newGender;
     }
     
-    public int setAge(int newAge){
-        Age newAge;
+    public void setAge(int newAge){
+        Age = newAge;
     }
     
      public void setActivityFactor(String newActLabel){
