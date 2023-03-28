@@ -21,6 +21,7 @@ public class User {
     private String MedicineKeys = null;
     private String Gender = null;
     private int Age = 0;
+    private String ActivityFactorLabel = null;
     
     public void UserSetData(String[] Data){
         Username = Data[0];
@@ -34,6 +35,7 @@ public class User {
         MedicineKeys = Data[8];
         Gender = Data[9];
         Age = Integer.parseInt(Data[10]);
+        ActivityFactorLabel = Data[11];
     }
     
     //mutator methods
@@ -73,12 +75,16 @@ public class User {
         MedicineKeys = newMedKeys;
     }
     
-    public String setGender(){
-        return Gender;
+    public String setGender(String newGender){
+        Gender = newGender;
     }
     
-    public int setAge(){
-        return Age;
+    public int setAge(int newAge){
+        Age newAge;
+    }
+    
+     public void setActivityFactor(String newActLabel){
+        ActivityFactorLabel = newActLabel;
     }
     
     //accessor methods
@@ -124,6 +130,10 @@ public class User {
     
     public int getAge(){
         return Age;
+    }
+    
+     public String getActivityLabel(){
+        return ActivityFactorLabel;
     }
     
 }
