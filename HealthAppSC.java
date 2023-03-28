@@ -35,6 +35,7 @@ public class HealthAppSC {
         ^also is in format (medName,weeklyDose)
         UserDataSplited[9] is Gender (male/female)
         UserDataSplited[10] is Age
+        UserDataSplited[11] is ActiveFactorLabel (inactive, lightly, moderately, very, or extremely)
         */
         User UserData = new User();
         UserData.UserSetData(UserDataSplited);
