@@ -4,9 +4,12 @@
  */
 package healthappsc;
 
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 /**
  *
  * @author Ethan Judice, Cathleen Foret
@@ -16,7 +19,7 @@ public class HealthAppSC {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws FileNotFoundException{
+    public static void main(String[] args) throws FileNotFoundException, IOException{
         
         String UserDataString = Login.LoginPrompt();
         String OldData = UserDataString;
@@ -54,6 +57,25 @@ public class HealthAppSC {
         
         WorkoutGen WorkoutGenData = new WorkoutGen();
         
+        String NewData = UserData.getUsername() + " " + UserData.getPassword() + " " +  
+                  UserData.getHeight() + " " + UserData.getWeight() + " " +
+                  UserData.getBMI() + " " + UserData.getCalories() + " " +
+                  UserData.getWater() + " " + UserData.getWorkoutKeys() + " " +
+                  UserData.getMedKeys() + " " + UserData.getGender() + " " +
+                  UserData.getAge() + " " + UserData.getActivityLabel() + " ";
+                
+         String path = "UserInfo.txt";
+         Scanner inFile = new Scanner(new FileReader(path));
+         StringBuffer buff = new StringBuffer();
+         while(inFile.hasNextLine()){
+               buff.append(inFile.nextLine() + System.lineSeparator());
+         }
+         String fileCont = buff.toString();
+         inFile.close();
+         fileCont = fileCont.replaceAll(OldData, NewData);
+         FileWriter writer = new FileWriter(path);
+         writer.append(fileCont);
+         writer.flush();
         
     }
     
