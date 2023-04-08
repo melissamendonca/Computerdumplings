@@ -25,7 +25,6 @@
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-<input type="hidden" display="none" value="${water}" name="water">
 
 <body id="page-top">
 
@@ -36,7 +35,7 @@
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="main.jsp">
       <div class="sidebar-brand-text mx-3">HealthDump</div>
     </a>
 
@@ -45,7 +44,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="main.jsp">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
@@ -62,12 +61,10 @@
     <hr class="sidebar-divider">
 
     <!-- added bs -->
-    <form action="main-servlet" method="get">
     <li class="nav-item active">
       <a class="nav-link" href="water.jsp">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Water</span></a>
-    </form>
 
     <li class="nav-item active">
       <a class="nav-link" href="meds.jsp">
@@ -92,7 +89,7 @@
     <hr class="sidebar-divider my-0">
 
     <li class="nav-item active">
-      <a class="nav-link" href="water.jsp">
+      <a class="nav-link" href="workouts.jsp">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Workouts</span></a>
     </li>
@@ -188,7 +185,7 @@
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      Current Weight</div>
+                      Weight</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800"> ${weight} </div>
                   </div>
                   <div class="col-auto">
