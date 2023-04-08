@@ -1,7 +1,8 @@
 package com.example.project;
+import javax.servlet.http.HttpServlet;
 import java.util.Scanner;
 
-public class WorkoutServlet {
+public class WorkoutServlet extends HttpServlet {
 
     public String[] workoutList(String Keys){
 

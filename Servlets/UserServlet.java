@@ -1,6 +1,5 @@
 package com.example.project;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
@@ -23,24 +22,8 @@ public class UserServlet extends HttpServlet {
 
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-
-        String username = "hey";
-        int height = this.getHeight();
-        int weight = this.getWeight();
-        int BMI = this.getBMI();
-
-        request.setAttribute("username", username);
-        request.setAttribute("height", height);
-        request.setAttribute("weight", weight);
-        request.setAttribute("BMI", BMI);
-
-
-
 
     }
-
-
 
 
     public void UserSetData(String[] Data){

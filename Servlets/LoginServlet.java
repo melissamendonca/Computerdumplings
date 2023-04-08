@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 @WebServlet(name = "loginServlet", value = "/login-servlet")
@@ -48,28 +49,68 @@ public class LoginServlet extends HttpServlet {
                         User.UserSetData(UserDataSplit);
 
                         loginSuccess = true;
-                        request.setAttribute("username", username);
 
+                        //initialize user
                         int BMI = User.getBMI();
                         int height = User.getHeight();
                         int weight = User.getWeight();
-
+                        int calories = User.getCalories();
+                        String gender = User.getGender();
+                        int age = User.getAge();
+                        String activityFactor = User.getActivityLabel();
                         int water = User.getWater();
 
-                        request.setAttribute("BMI", BMI);
-                        request.setAttribute("height", height);
-                        request.setAttribute("weight", weight);
-                        request.setAttribute("water", water);
+                        String WorkoutKeys = User.getWorkoutKeys();
+                        String MedKeys = User.getMedKeys();
 
+                        HttpSession session = request.getSession(true);
+
+                        //for front page
+                        session.setAttribute("username", username);
+                        session.setAttribute("BMI", BMI);
+                        session.setAttribute("height", height);
+                        session.setAttribute("weight", weight);
+
+                        //for cal page
+                        session.setAttribute("calories",calories );
+                        session.setAttribute("cal_consumed",0);
+
+                        //for water page
+                        WaterServlet wasser = new WaterServlet();
+                        wasser.waterIntakeCalc(weight);
+                        User.setWater(wasser.getWaterIntake());
+
+                        session.setAttribute("water", water);
+                        session.setAttribute("water_consumed", 0);
+                        session.setAttribute("exercise", 0);
+
+                        //for cal page
+                        session.setAttribute("activityFactor", activityFactor);
+                        session.setAttribute("gender",gender);
+                        session.setAttribute("age", age);
+                        session.setAttribute("targetweight", weight);
+
+                        CalorieServlet cal = new CalorieServlet();
+                        cal.calorieIntakeCalc(gender,height,weight,age);
+                        User.setCalories(cal.getCalorieIntake());
+                        session.setAttribute("calories", calories);
+
+
+                        //for workout page
+                        session.setAttribute("workout",WorkoutKeys);
+
+                        //for med page
+                        MedicationServlet Meds = new MedicationServlet();
+                        String meds = MedKeys;
+                        List<String> medsList = Meds.splitMeds(MedKeys);
+                        session.setAttribute("meds", medsList.get(0));
+                        session.setAttribute("dosage", medsList.get(1));
+                        session.setAttribute("taken",0);
+
+                        //send to main after login
                         RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
                         rd.forward(request, response);
 
-
-
-                        request.setAttribute("weight", weight);
-                        RequestDispatcher rd2 = request.getRequestDispatcher("water-servlet");
-
-                        rd2.forward(request, response);
                     }
 
                 }
