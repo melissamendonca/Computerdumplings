@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
-                            <a href="href=login.jsp" class="text-info">Back to Login</a>
+                            <a href="login.jsp" class="text-info">Back to Login</a>
                         </div>
                     </form>
                 </div>

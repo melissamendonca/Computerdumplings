@@ -15,7 +15,8 @@
 
 
     You have taken <span style = "color:#284fc2;" > ${taken} </span> doses of  <span style = "color:#284fc2;" >${meds} </span>
-    and have <span style = "color:#284fc2;" > ${dosage-taken} </span> remaining <br>
+    and have <span style = "color:#284fc2;" > ${dosage-taken} </span> remaining <br> <br>
+    ${meds_done} <br> <br>
 
 
 <form action = "meds-servlet" method = "get">

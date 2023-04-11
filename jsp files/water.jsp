@@ -16,7 +16,9 @@
 <h2 style ="color:#000000; font-size: 20px; font-family: Verdana; font-weight: normal " >
 <form action = "water-servlet" method = "get">
     You should drink at least <span style = "color:#284fc2;" > ${water} </span> oz of water today <br> <br>
-    You have consumed <span style = "color:#284fc2;" >${water_consumed} </span> oz <br> <br> <br>
+    You have consumed <span style = "color:#284fc2;" >${water_consumed} </span> oz <br> <br>
+    ${water_done} <br> <br> <br>
+
     <span style ="font-size: 16px; color:#284fc2;"> Enter total workout length in minutes to recalculate amount </span><input type="text" name="exercise"><button type="submit">Enter</button>
 
 </form>

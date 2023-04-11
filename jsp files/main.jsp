@@ -146,7 +146,7 @@
           <!-- Nav Item - User Information -->
 
           <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+            <a class="nav-link dropdown-toggle" href="user.jsp" id="userDropdown" role="button"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="mr-2 d-none d-lg-inline text-gray-600 small"> ${username} </span>
               <img class="img-profile rounded-circle"
@@ -186,7 +186,8 @@
                   <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                       Weight</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800"> ${weight} </div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800"> ${weight}
+                      </div>
                   </div>
                   <div class="col-auto">
                     <i class="fas fa-balance-scale fa-2x text-gray-300"></i>
@@ -220,7 +221,7 @@
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" >
                       BMI</div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800"> ${BMI} </div>
                   </div>
@@ -232,6 +233,9 @@
             </div>
           </div>
         </div>
+        ${water_done_main} <br>
+        ${meds_done_main}  <br>
+        ${cal_done_main}   <br>
 
 
       <!-- /.container-fluid -->

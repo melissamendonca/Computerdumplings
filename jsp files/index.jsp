@@ -11,8 +11,8 @@
 
 <title>HealthDump</title>
 <body>
-<h1 style="font-weight:bolder; color:#1ea4ba;">HealthDump: Your Health, Dumped.</h1>
-<div style="color:#1ea4ba;"> Login Or Start Dumping Your Health Today!
+<h1 style="font-weight:bolder; color:#1ea4ba;">HealthDump</h1>
+<div style="color:#1ea4ba;"> Login or Register!
     <br><br><br><a type="login" style="font-size: 24px;border-radius: 8px; color:#1ea4ba;" href="login.jsp">Login</a>
     <br><br><a type="register" style="font-size: 24px;border-radius: 8px; color:#1ea4ba;"  href="register.jsp">Register</a>
 </div>
