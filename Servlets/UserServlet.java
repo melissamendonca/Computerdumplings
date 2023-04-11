@@ -22,9 +22,35 @@ public class UserServlet extends HttpServlet {
 
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        HttpSession session = request.getSession(true);
+        if (request.getParameter("newName") != null) {
+            String newName = request.getParameter("newName");
+            session.setAttribute("username", newName);
+        }
+        if (request.getParameter("newGen") != null) {
 
+            String newGen = request.getParameter("newGen");
+            session.setAttribute("gender", newGen);
+        }
+        if (request.getParameter("newAge") != null) {
+
+            int newAge = Integer.parseInt(request.getParameter("newAge"));
+            session.setAttribute("age", newAge);
+        }
+        if (request.getParameter("newH") != null) {
+
+            int newH = Integer.parseInt(request.getParameter("newH"));
+            session.setAttribute("height", newH);
+        }
+        if (request.getParameter("newW") != null) {
+
+            int newW = Integer.parseInt(request.getParameter("newW"));
+            session.setAttribute("weight", newW);
+        }
+
+        response.sendRedirect("/user.jsp");
     }
-
 
     public void UserSetData(String[] Data){
         Username = Data[0];
@@ -59,8 +85,10 @@ public class UserServlet extends HttpServlet {
         Weight = newWeight;
     }
 
-    public void setBMI(int newBMI){
-        BMI = newBMI;
+    public void setBMI(int h, int w){
+        BMIServlet bm = new BMIServlet();
+        bm.setBMI(h,w);
+        BMI = bm.getBMI();
     }
 
     public void setCalories(int newCal){
@@ -140,11 +168,6 @@ public class UserServlet extends HttpServlet {
     public String getActivityLabel(){
         return ActivityFactorLabel;
     }
-
-
-
-
-
 
 
 }

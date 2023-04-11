@@ -45,6 +45,20 @@ public class WaterServlet extends HttpServlet{
         }
 
 
+        String water_page_message;
+        String main_page_message;
+        if(waterCount >= recWaterIntake){
+            water_page_message = "You've reached your water goal!";
+            main_page_message = "Daily Water Goal Reached!";
+        }
+        else{
+            water_page_message = "";
+            main_page_message = "";
+        }
+        session.setAttribute("water_done", water_page_message);
+        session.setAttribute("water_done_main",main_page_message);
+
+
         response.sendRedirect("/water.jsp");
 
     }

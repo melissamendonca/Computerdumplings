@@ -11,6 +11,7 @@ import java.io.IOException;
 public class CalorieServlet extends HttpServlet {
     private int recCalIntake = 0;
     private double activeFactor = 0;
+    private int calCount = 0;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
@@ -37,13 +38,23 @@ public class CalorieServlet extends HttpServlet {
 
         if (request.getParameter("amount") != null) {
 
-            int calIntake = (int) session.getAttribute("cal_consumed") + Integer.parseInt(request.getParameter("amount"));
-            session.setAttribute("cal_consumed", calIntake);
+            calCount = (int) session.getAttribute("cal_consumed") + Integer.parseInt(request.getParameter("amount"));
+            session.setAttribute("cal_consumed", calCount);
             response.sendRedirect("/calories.jsp");
         }
 
-
-
+        String cal_page_message;
+        String main_page_message;
+        if(calCount >= recCalIntake){
+            cal_page_message = "You've reached your calorie goal!";
+            main_page_message = "Daily Calorie Goal Reached!";
+        }
+        else{
+            cal_page_message = "";
+            main_page_message = "";
+        }
+        session.setAttribute("cal_done", cal_page_message);
+        session.setAttribute("cal_done_main", main_page_message);
 
     }
 

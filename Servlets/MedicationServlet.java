@@ -14,7 +14,6 @@ public class MedicationServlet extends HttpServlet {
 
     private int numTaken = 0;
     private int dosage = 0;
-    private int numLeft = 0;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
@@ -25,6 +24,23 @@ public class MedicationServlet extends HttpServlet {
 
         session.setAttribute("taken", numTaken);
         response.sendRedirect("/meds.jsp");
+
+        String meds_page_message;
+        String main_page_message;
+        if(numTaken == dosage){
+            meds_page_message = "You've taken the recommended dosage for your medication.";
+            main_page_message = "Daily Medication Dose Reached!";
+        }
+        else if(numTaken > dosage){
+            meds_page_message = "Warning! You've gone over the recommended dosage for your medication!";
+            main_page_message = meds_page_message;
+        }
+        else{
+            meds_page_message = "";
+            main_page_message = "";
+        }
+        session.setAttribute("meds_done", meds_page_message);
+        session.setAttribute("meds_done_main", main_page_message);
 
 
     }

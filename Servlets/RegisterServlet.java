@@ -10,7 +10,8 @@ import java.util.Scanner;
 @WebServlet(name = "registerServlet", value = "/register-servlet")
 
 public class RegisterServlet extends HttpServlet{
-    private String userData = "";
+   private String userData;
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
 
@@ -21,23 +22,26 @@ public class RegisterServlet extends HttpServlet{
         String gender = request.getParameter("gender");
         String age = request.getParameter("age");
 
-        String filename = "/WEB-INF/UserInfo.txt"; //does not work
+        String userHome = System.getProperty("user.home");
+        String filelocation = userHome + "\\Desktop\\UserInfo.txt";
 
-        ServletContext context = getServletContext();
-        String pathname = context.getRealPath(filename);
+        File f = new File(filelocation);
 
-        String UserData = username + " " + password + " " + height + " " + weight + " 0  0  0  x,x,x x,0, " + gender + " " + age + " inactive";
+        if (!f.exists()) {
+            f.createNewFile();
+        }
 
-        Scanner inFile = new Scanner(new FileReader(pathname));
-        BufferedReader Reader = new BufferedReader(new FileReader(pathname));
-        FileWriter writer = new FileWriter(pathname, true);
-        writer.write("\n");
-        writer.write(UserData);
-        writer.close();
+        userData = username + " " + password + " " + height + " " + weight + " 0  0  0  x,x,x x,0, " + gender + " " + age + " inactive";
 
-        userData = UserData;
-        response.getWriter().print(userData);
 
-        response.sendRedirect("src/main/UserInfo.txt"); //does not work
+
+        FileWriter writer = new FileWriter(filelocation, true);
+        BufferedWriter bw = new BufferedWriter(writer);
+        bw.newLine();
+        bw.write(userData);
+        bw.flush();
+        bw.close();
+
+        response.sendRedirect("login.jsp");
     }
 }

@@ -9,7 +9,6 @@ import javax.servlet.annotation.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
@@ -21,9 +20,6 @@ public class LoginServlet extends HttpServlet {
 
         response.setContentType("text/html");
         String UserData = "";
-        String textDoc = "/WEB-INF/UserInfo.txt";
-        ServletContext context = getServletContext();
-        String pathname = context.getRealPath(textDoc);
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -31,18 +27,24 @@ public class LoginServlet extends HttpServlet {
 
         String[] split = UserInputString.split("\\s+");
 
-        FileReader fileReader = new FileReader(pathname);
-        BufferedReader br = new BufferedReader(fileReader);
+        String userHome = System.getProperty("user.home");
+        String file= userHome + "\\Desktop\\UserInfo.txt";
+        File f = new File(file);
+
+        Scanner scanner = new Scanner(f);
         String line;
         boolean loginSuccess = false;
             if (split.length == 2) {
                 int lineCount = 0;
-                while ((line = br.readLine()) != null) {
+                while ((line = scanner.nextLine()) != null) {
                     lineCount++;
 
                     if (line.contains(UserInputString)) {
 
                         UserData = extractUserData(lineCount);
+
+                        HttpSession session = request.getSession(true);
+                        session.setAttribute("oldData", UserData);
 
                         String[] UserDataSplit = UserData.split("\\s+");
                         UserServlet User = new UserServlet();
@@ -51,9 +53,14 @@ public class LoginServlet extends HttpServlet {
                         loginSuccess = true;
 
                         //initialize user
-                        int BMI = User.getBMI();
+                        String name = User.getUsername();
                         int height = User.getHeight();
                         int weight = User.getWeight();
+                        User.setBMI(height, weight);
+
+
+                        int BMI = Math.round(((float) weight / (height*height)) * 703) ;
+
                         int calories = User.getCalories();
                         String gender = User.getGender();
                         int age = User.getAge();
@@ -63,17 +70,16 @@ public class LoginServlet extends HttpServlet {
                         String WorkoutKeys = User.getWorkoutKeys();
                         String MedKeys = User.getMedKeys();
 
-                        HttpSession session = request.getSession(true);
+                        session.setAttribute("password", password);
 
                         //for front page
-                        session.setAttribute("username", username);
+                        session.setAttribute("username", name);
                         session.setAttribute("BMI", BMI);
                         session.setAttribute("height", height);
                         session.setAttribute("weight", weight);
 
-                        //for cal page
-                        session.setAttribute("calories",calories );
-                        session.setAttribute("cal_consumed",0);
+                        //for user page
+                        session.setAttribute("age", age);
 
                         //for water page
                         WaterServlet wasser = new WaterServlet();
@@ -85,10 +91,12 @@ public class LoginServlet extends HttpServlet {
                         session.setAttribute("exercise", 0);
 
                         //for cal page
+                        session.setAttribute("calories",calories );
+                        session.setAttribute("cal_consumed",0);
                         session.setAttribute("activityFactor", activityFactor);
-                        session.setAttribute("gender",gender);
                         session.setAttribute("age", age);
                         session.setAttribute("targetweight", weight);
+                        session.setAttribute("gender", gender);
 
                         CalorieServlet cal = new CalorieServlet();
                         cal.calorieIntakeCalc(gender,height,weight,age);
@@ -97,11 +105,15 @@ public class LoginServlet extends HttpServlet {
 
 
                         //for workout page
-                        session.setAttribute("workout",WorkoutKeys);
+                        WorkoutServlet ws = new WorkoutServlet();
+                        String st  = ws.initializeWorkout(WorkoutKeys);
+                        ws.workoutGenerator(st);
+                        String m = ws.getMessage();
+                        session.setAttribute("workout", st);
+                        session.setAttribute("workoutGen", m);
 
                         //for med page
                         MedicationServlet Meds = new MedicationServlet();
-                        String meds = MedKeys;
                         List<String> medsList = Meds.splitMeds(MedKeys);
                         session.setAttribute("meds", medsList.get(0));
                         session.setAttribute("dosage", medsList.get(1));
@@ -122,14 +134,14 @@ public class LoginServlet extends HttpServlet {
             else response.getWriter().println("Format Not Supported");
     }
     public String extractUserData(int line) throws FileNotFoundException{
+        String userHome = System.getProperty("user.home");
+        String file= userHome + "\\Desktop\\UserInfo.txt";
+        File f = new File(file);
 
-        String textDoc = "/WEB-INF/UserInfo.txt";
-        ServletContext context = getServletContext();
-        String pathname = context.getRealPath(textDoc);
         String Data = "";
-        Scanner inFile = new Scanner(new FileReader(pathname));
+        Scanner scanner = new Scanner(f);
         for(int i=0;i<line;i++){
-            Data = inFile.nextLine();
+            Data = scanner.nextLine();
         }
 
         return Data;
