@@ -7,16 +7,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
-import java.util.Scanner;
 
 @WebServlet(name = "overwriteServlet", value = "/overwrite-servlet")
 public class OverwriteData extends HttpServlet {
+
     private String newData = "";
+    private static OverwriteData inst = null;
+
+
+    public static OverwriteData getInstance(){
+        if(inst == null){
+            inst = new OverwriteData();
+        }
+        return inst;
+    }
+
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.getInstance();
         response.setContentType("text/html");
         HttpSession session = request.getSession(true);
-
 
         String user = (String) session.getAttribute("username");
         String pass = (String) session.getAttribute("password");
@@ -40,7 +50,6 @@ public class OverwriteData extends HttpServlet {
         String fl = userHome + "\\Desktop\\UserInfo.txt";
 
         String oldData = (String) session.getAttribute("oldData");
-        System.out.println(oldData);
 
         File f = new File(fl);
         BufferedReader b = new BufferedReader(new FileReader(f));
@@ -55,13 +64,6 @@ public class OverwriteData extends HttpServlet {
         BufferedWriter w = new BufferedWriter(new FileWriter(f));
         w.write(s.toString());
         w.close();
-
-
-
-
-
-
-
 
         response.sendRedirect("/index.jsp");
 
